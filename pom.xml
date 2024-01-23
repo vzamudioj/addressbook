@@ -5,7 +5,6 @@
     <groupId>com.vaadin.tutorial</groupId>
     <artifactId>addressbook</artifactId>
     <packaging>war</packaging>
-    <version>LATEST</version>
     <name>Vaadin Addressbook example</name>
 
     <properties>
