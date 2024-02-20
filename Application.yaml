@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: project-docker
-        image: tampoohoonm/project-docker:1
+        image: tampoohoonm/project-docker:latest
         ports:
         - containerPort: 8080  
 
