@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: project-docker-deployment
+  name: project-k8s-deployment
 spec:
   replicas: 3 
   selector:
     matchLabels:
-      app: project-docker
+      app: project-k8s
   template:
     metadata:
       labels:
-        app: project-docker
+        app: project-k8s
     spec:
       containers:
-      - name: project-docker
+      - name: project-k8s
         image: tampoohoonm/project-k8s:latest
         ports:
         - containerPort: 8080  
@@ -22,11 +22,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: project-docker-service
+  name: project-k8s-service
 spec:
   type: LoadBalancer
   selector:
-    app: project-docker
+    app: project-k8s
   ports:
   - protocol: TCP
     port: 80
