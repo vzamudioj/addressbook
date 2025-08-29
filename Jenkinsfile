@@ -6,11 +6,11 @@ pipeline{
     environment{
         cred = credentials('aws-key')
     }
-    
+
     stages{
         stage('Checkout out code'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vzamudioj/TestSonarqubeRepoCode.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vzamudioj/addressbook.git']])
             }
         }
          stage('SonarQube Analysis') {
