@@ -33,7 +33,7 @@ pipeline{
                         error "SonarQube Quality Gate failed with status: ${qg.status}"
                         }
                     }
-                 sh 'echo hi everone'    
+                 sh 'echo hi everones'    
              
                 }
              }
