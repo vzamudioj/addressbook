@@ -1,5 +1,12 @@
 pipeline{
     agent any
+    tools {
+        maven 'maven'
+    }
+    environment{
+        cred = credentials('aws-key')
+    }
+    
     stages{
         stage('Checkout out code'){
             steps{
@@ -31,6 +38,19 @@ pipeline{
                 }
              }
          }
+         stage('Docker build'){
+            steps{
+                sh 'docker -v'
+                sh 'docker build -t 881630945677.dkr.ecr.us-east-1.amazonaws.com/vicontainers:${BUILD_NUMBER} .'
+            }
+        }
+        stage('Docker push to ECR'){
+            steps{
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 881630945677.dkr.ecr.us-east-1.amazonaws.com'
+                sh 'docker push 881630945677.dkr.ecr.us-east-1.amazonaws.com/vicontainers:${BUILD_NUMBER}'
+                
+            }
+        }
          
     }
 }
